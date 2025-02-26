@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, send_from_directory
-from helpers.config.assets_blueprint import assets_blueprint
+from blueprints.bundle import bundle_blueprint
 
 def create_app(test_config=None):
     app = Flask(
@@ -9,7 +9,7 @@ def create_app(test_config=None):
         static_folder="static",
         template_folder=".",
     )
-    app.register_blueprint(assets_blueprint)
+    app.register_blueprint(bundle_blueprint)
     
     @app.route('/favicon.ico')
     def favicon():
@@ -18,10 +18,10 @@ def create_app(test_config=None):
             'favicon.ico', 
             mimetype='image/vnd.microsoft.icon')
         
-    @app.route('/dist/bundled/<asset>')
-    def serve_assets(asset):
+    @app.route('/dist/bundled/<bundle>')
+    def serve_bundle(bundle):
         return send_from_directory(
-            os.path.join(app.root_path, '../dist/bundled'), asset)    
+            os.path.join(app.root_path, '../dist/bundled'), bundle)    
     
     @app.errorhandler(404)
     def page_not_found(e):

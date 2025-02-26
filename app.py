@@ -21,7 +21,7 @@ def create_app(test_config=None):
     @app.route('/dist/bundled/<bundle>')
     def serve_bundle(bundle):
         return send_from_directory(
-            os.path.join(app.root_path, '../dist/bundled'), bundle)    
+            os.path.join(app.root_path, 'dist/bundled'), bundle)    
     
     @app.errorhandler(404)
     def page_not_found(e):

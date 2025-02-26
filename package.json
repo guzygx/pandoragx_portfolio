@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "freeze": "pip freeze > requirements.txt",
-    "flask:dev": "flask --app src/app.py run --debug",
-    "flask:prod": "flask --app src/app.py run",
+    "flask:dev": "flask --app app.py run --debug",
+    "flask:prod": "flask --app app.py run",
     "activate": "source .venv/bin/activate",
     "vite:dev": "vite",
     "vite:build": "vite build",

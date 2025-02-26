@@ -13,7 +13,7 @@ bundle_blueprint = Blueprint("bundle_blueprint", __name__)
 
 manifest = {}
 if is_production:
-    manifest_path = "dist/manifest.json"
+    manifest_path = "app/static/dist/manifest.json"
     with open(manifest_path, "r") as content:
         manifest = json.load(content)
 
@@ -24,7 +24,7 @@ def add_context():
 
     def prod_bundle(file_path):
         try:
-            return f"dist/{manifest[file_path]['file']}"
+            return f"app/static/dist/{manifest[file_path]['file']}"
         except:
             return "bundle-blueprint-error"
 

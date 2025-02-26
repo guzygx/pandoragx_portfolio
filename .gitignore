@@ -26,4 +26,4 @@ dist-ssr
 
 # Python Stuff
 .venv
-# **/__pycache__
+**/__pycache__/*

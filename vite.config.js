@@ -8,12 +8,12 @@ export default defineConfig({
   },
   root: __dirname,
   build: {
-    outDir: path.join(__dirname, "./dist/"),
+    outDir: path.join(__dirname, "./app/static/dist/"),
     manifest: "manifest.json",
     assetsDir: "bundled",
     rollupOptions: {
       input: [
-        ...globSync("src/{javascript,css}/**/*.{css,js}")
+        ...globSync("app/static/{_javascript,_css}/**/*.{css,js}")
       ],
     },
     emptyOutDir: true,

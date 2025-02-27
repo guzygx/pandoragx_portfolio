@@ -6,8 +6,8 @@
   "scripts": {
     "freeze": "pip freeze > app/requirements.txt",
     "install": "pip install -r app/requirements.txt",
-    "flask:dev": "flask --app app/app.py run --debug",
-    "flask:prod": "flask --app app/app.py run",
+    "flask:dev": "flask --app app.py run --debug",
+    "flask:prod": "flask --app app.py run",
     "activate": "source .venv/bin/activate",
     "vite:dev": "vite",
     "vite:build": "vite build",

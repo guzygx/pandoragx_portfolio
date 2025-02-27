@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, send_from_directory
-from blueprints.bundle import bundle_blueprint
+from .blueprints.bundle import bundle_blueprint
 
 app = Flask(__name__, template_folder=".")
 app.register_blueprint(bundle_blueprint)

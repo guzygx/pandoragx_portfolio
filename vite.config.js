@@ -1,6 +1,7 @@
 import path from "node:path";
 import { defineConfig } from "vite";
 import { globSync } from "glob";
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   server: {
@@ -13,10 +14,14 @@ export default defineConfig({
     assetsDir: "bundled",
     rollupOptions: {
       input: [
-        ...globSync("app/static/{_javascript,_css}/**/*.{css,js}")
+        ...globSync("app/static/_css/prebuild/**/*.css"),
+        ...globSync("app/static/_javascript/**/*.js")
       ],
     },
     emptyOutDir: true,
     copyPublicDir: false,
+    plugins: [
+      tailwindcss(),
+    ]
   },
 });

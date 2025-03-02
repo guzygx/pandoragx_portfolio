@@ -1,0 +1,7 @@
+
+  VITE v6.2.0  ready in 311 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+9:57:37 AM [vite] (client) page reload app/pages/index.html
+9:57:37 AM [vite] (client) hmr update /app/static/_css/prebuild/style.css?direct

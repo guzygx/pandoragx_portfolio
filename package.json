@@ -8,8 +8,8 @@
     "install": "pip install -r app/requirements.txt",
     "activate": "source .venv/bin/activate",
     "dev": "sudo ./run_dev.sh",
-    "preview": "npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_css/prebuild/style.css -m && vite build && flask --app app.py run",
-    "build": "npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_css/prebuild/style.css -m && vite build"
+    "preview": "sudo npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_prebuild/_css/style.css -m && vite build && flask --app app.py run",
+    "build": "npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_prebuild/_css/style.css -m && vite build"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.0.9",

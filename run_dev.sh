@@ -5,7 +5,7 @@ terminate(){
     exit
 }
 
-npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_css/prebuild/style.css --watch=always &
+npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_prebuild/_css/style.css --watch=always &
 vite &
 flask --app app.py run --debug
 

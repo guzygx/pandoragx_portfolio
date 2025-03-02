@@ -13,7 +13,8 @@ export default defineConfig({
     assetsDir: "bundled",
     rollupOptions: {
       input: [
-        ...globSync("app/static/{_javascript,_css}/**/*.{css,js}")
+        ...globSync("app/static/_prebuild/_css/**/*.css"),
+        ...globSync("app/static/_javascript/**/*.js")
       ],
     },
     emptyOutDir: true,

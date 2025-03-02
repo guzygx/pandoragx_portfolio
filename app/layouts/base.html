@@ -5,12 +5,11 @@
   <title>{% block title %}{% endblock %}</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ bundle('app/static/_css/style.css') }}"/>
+  <link rel="stylesheet" href="{{ bundle('app/static/_prebuild/_css/style.css') }}"/>
   <script type="module" src="{{ bundle('app/static/_javascript/main.js') }}" defer></script>
 </head>
 
 <body>
-
   {% block content %}{% endblock %}
   {% block javascript %}{% endblock %}
 </body>

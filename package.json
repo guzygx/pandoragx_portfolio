@@ -6,17 +6,16 @@
   "scripts": {
     "freeze": "pip freeze > app/requirements.txt",
     "install": "pip install -r app/requirements.txt",
-    "flask:dev": "flask --app app.py run --debug",
-    "flask:prod": "flask --app app.py run",
     "activate": "source .venv/bin/activate",
-    "vite:dev": "vite",
-    "vite:build": "vite build",
-    "vite:preview": "vite preview"
+    "dev": "sudo ./run_dev.sh",
+    "preview": "sudo npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_prebuild/_css/style.css -m && vite build && flask --app app.py run",
+    "build": "npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_prebuild/_css/style.css -m && vite build"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.2",
+    "@tailwindcss/cli": "^4.0.9",
     "glob": "^11.0.1",
     "lodash": "^4.17.21",
+    "tailwindcss": "^4.0.9",
     "vite": "^6.2.0"
   }
 }

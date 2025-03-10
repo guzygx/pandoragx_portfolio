@@ -1,9 +1,23 @@
 import os
-from flask import Flask, render_template, send_from_directory
-from .blueprints.bundle import bundle_blueprint
+from flask import Flask, render_template, send_from_directory,  g, request
+from flask_babel import Babel, _
+from .blueprints.bundle import bundle
+
+LANGUAGES = {
+    'en': 'English',
+    'fr': 'Français'
+}
+
+def get_locale():
+    language = g.get('lang_code')
+    return language if language in LANGUAGES else 'en'
 
 app = Flask(__name__, template_folder=".")
-app.register_blueprint(bundle_blueprint)
+app.register_blueprint(bundle)
+app.config['BABEL_TRANSLATION_DIRECTORIES'] = './i18n'
+
+babel = Babel(app)
+babel.init_app(app, locale_selector=get_locale)
 
 @app.route('/favicon.ico')
 def favicon():
@@ -20,9 +34,23 @@ def serve_bundle(bundle):
 def page_not_found(e):
     return render_template('layouts/404.html'), 404
 
-@app.route("/")
-def index():
-    return render_template('pages/index.html')
+@app.route('/<lang>')
+def index(lang):
+    if lang not in LANGUAGES:
+        # return 'Invalid language', 404
+        return page_not_found("invalid language")
+        
+    # Set the language for this request
+    g.lang_code = lang
+    
+    print("lang:", lang)
+    greeting = _('hello')
+    
+    return render_template('pages/index.html', greeting=greeting)
+
+# @app.route("/")
+# def index():
+#     return render_template('pages/index.html')
 
 @app.route("/contact")
 def contact():

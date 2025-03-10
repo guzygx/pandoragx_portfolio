@@ -7,9 +7,13 @@
     "freeze": "pip freeze > app/requirements.txt",
     "install": "pip install -r app/requirements.txt",
     "activate": "source .venv/bin/activate",
-    "dev": "sudo ./run_dev.sh",
-    "preview": "sudo npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_prebuild/_css/style.css -m && vite build && flask --app app.py run",
-    "build": "npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_prebuild/_css/style.css -m && vite build"
+    "dev": "./utils/scripts/run_dev.sh",
+    "preview": "npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_prebuild/_css/style.css -m && vite build && flask --app app.py run",
+    "build": "npx @tailwindcss/cli -i ./app/static/_css/style.css -o ./app/static/_prebuild/_css/style.css -m && vite build",
+    "extract": "pybabel extract -F babel.cfg -k lazy_gettext -o app/i18n/messages.pot .",
+    "translate": "pybabel init -i app/i18n/messages.pot -d app/i18n/ -l fr && pybabel init -i app/i18n/messages.pot -d app/i18n/ -l en",
+    "compile": "pybabel compile -d app/i18n",
+    "update": "pybabel update -i app/i18n/messages.pot -d app/i18n"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.0.9",

@@ -1,7 +1,7 @@
 import json
 import os
 from pathlib import Path
-from flask import Blueprint
+from flask import Blueprint, send_from_directory, current_app
 
 FLASK_DEBUG = os.getenv("FLASK_DEBUG", "0")
 VITE_ORIGIN = os.getenv("VITE_ORIGIN", "http://localhost:5173")
@@ -32,3 +32,14 @@ def add_context():
         "bundle": prod_bundle if is_production else dev_bundle,
         "is_production": is_production,
     }
+
+@bundle.route('/favicon.ico')
+def favicon():
+    return send_from_directory(
+        os.path.join(current_app.root_path, 'static'),
+        'favicon.ico')
+
+@bundle.route('/app/static/dist/bundled/<bundle>')
+def serve_bundle(bundle):
+    return send_from_directory(
+        os.path.join(current_app.root_path, 'static/dist/bundled'), bundle)    
